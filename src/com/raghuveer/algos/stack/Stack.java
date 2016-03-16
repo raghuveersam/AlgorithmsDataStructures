@@ -2,16 +2,16 @@ package com.raghuveer.algos.stack;
 
 import java.util.NoSuchElementException;
 
-public class Stack {
+public class Stack<T> {
 
-	Node top;
+	Node<T> top;
 
 	public Stack() {
 		top = null;
 	}
 
-	public void push(int data){
-		Node node = new Node(data);
+	public void push(T data){
+		Node<T> node = new Node<T>(data);
 		if(isEmpty()){
 			top = node;
 		}
@@ -21,18 +21,18 @@ public class Stack {
 		}	
 	}
 	
-	public int pop(){
+	public T pop(){
 		if(isEmpty()){
 			throw new NoSuchElementException();
 		}else{
-			int data;
+			T data;
 			data = top.data;
 			top = top.next;
 			return data;
 		}
 	}
 	
-	public int peek(){
+	public T peek(){
 		if(isEmpty()){
 			throw new NoSuchElementException();
 		}else {
@@ -45,7 +45,7 @@ public class Stack {
 		
 		StringBuilder sb = new StringBuilder();
 		sb.append("[");
-		Node temp;
+		Node<T> temp;
 		if (isEmpty()) {
 			throw new NoSuchElementException();
 			
@@ -72,23 +72,14 @@ public class Stack {
 
 	public static void main(String args[]) {
 		
-		Stack stack = new Stack();
-		stack.push(10);
-		stack.push(20);
-		stack.push(30);
-		System.out.println("" + stack.toString());
-		stack.push(40);
-		System.out.println("" + stack.toString());
-		stack.pop();
-		System.out.println("" + stack.toString());
-		System.out.println("Peek "+stack.peek());
+		
 	}
 
-	static class Node {
-		 int data;
-		 Node next;
+	static class Node<T> {
+		 T data;
+		 Node<T> next;
 
-		public Node(int data) {
+		public Node(T data) {
 			this.data = data;
 			this.next = null;
 		}
